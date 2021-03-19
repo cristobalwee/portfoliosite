@@ -8,9 +8,12 @@ import DarkArrow from '../images/right_arrow_dark.svg';
 
 const Button = ({ title, dark, subtitle, arrowDir }) => {
   return (
-    <div className={ classnames('button', { 'dark': dark }) }>
-      <h3>{ title }</h3>
-      <img src={ dark ? DarkArrow : Arrow }></img>
+    <div className={ classnames('button', { 'dark': dark, 'reversed': arrowDir < 0, 'has-subtitle': subtitle }) }>
+      { subtitle && <div className='subtitle'>{ subtitle }</div> }
+      <div className='button-inner'>
+        <h3>{ title }</h3>
+        <img className={ classnames({ 'external-link': arrowDir === 0 }) } src={ dark ? DarkArrow : Arrow }></img>
+      </div>
     </div>
   );
 };

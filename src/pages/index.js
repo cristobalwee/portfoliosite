@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import anime from 'animejs/lib/anime.es.js';
+import Reveal from 'react-reveal/Reveal';
 
 import SEO from '../components/seo';
 import Menu from '../components/menu';
 import Button from '../components/button';
 import Portrait from '../images/portrait_short.jpg';
+import PortraitMobile from '../images/portrait.jpg';
 import SlopeCommand from '../images/slope_command.png';
 import Freely from '../images/freely.png';
 import Nabla from '../images/nabla.png';
@@ -21,16 +23,16 @@ const IndexPage = () => {
       translateZ: 0,
       opacity: [0,1],
       easing: 'easeOutExpo',
-      duration: 1000,
+      duration: 1100,
       delay: (el, i) => 1500 + 18 * i
     }).add({
-      targets: '.portrait',
-      translateY: [50,0],
+      targets: ['.portrait', '.portrait-mobile'],
+      translateY: [65,0],
       translateZ: 0,
       opacity: [0,1],
       easing: 'easeOutExpo',
-      duration: 1000,
-    }, '-=1100').add({
+      duration: 1200,
+    }, '-=1200').add({
       targets: ['.index .header-subtitle', '.index .menu'],
       opacity: [0,1],
       easing: 'linear',
@@ -47,71 +49,73 @@ const IndexPage = () => {
 
   return (
     <div className='index page'>
-      <SEO title="Cristobal Grana" />
+      <SEO title='Cristobal Gra&ntilde;a' />
       <Menu />
       <div className='header-subtitle'>
-        <span className='subtitle'>Cristobal Grana</span>
+        <span className='subtitle'>Cristobal Gra&ntilde;a</span>
         <span className='subtitle'>&mdash; &nbsp; Portfolio 2021</span>
       </div>
       <h1>HELLO THERE.</h1>
       <img className='portrait' src={ Portrait }></img>
-      <p className='about-section'>
-        Welcome to my site, my name Cristobal Grana and I’m currently a User Experience engineer at <span>GoDaddy</span>.
-        I love learning about <span>things that don’t matter</span> and doing stuff with the web. I like to think I belong
-        to the group of people who have the ability to solve design problems via code. <span><Link to='/about'>Read more</Link></span>
-      </p>
+      <img className='portrait-mobile' src={ PortraitMobile }></img>
+      <Reveal effect='fade'><p className='about-section'>
+        Welcome to my site, my name Cristobal Gra&ntilde;a and I’m currently a User Experience engineer at <span><a target='_blank' rel='noopener noreferrer' href='https://www.godaddy.com/'>GoDaddy</a></span>.
+        I love learning about <span><a target='_blank' rel='noopener noreferrer' href='https://en.wikipedia.org/wiki/Trivia'>things that don’t matter</a></span> and doing stuff with the web.
+        I like to think I belong to the group of people who have the ability to solve design problems via code. <br></br>
+        <span><Link to='/about'>Read more</Link></span>
+      </p></Reveal>
       <div className='works-section section'>
-        <div className='subtitle'>Featured works</div>
-        <Link to='/slope-command'><div className='work-list-item'>
+        <Reveal effect='fade'><div className='subtitle'>Featured works</div></Reveal>
+        <Reveal effect='fade'><Link to='/slope-command'><div className='work-list-item'>
           <h2>Slope Command</h2>
-          <span className='work-detail'>
+          {/*<span className='work-detail'>
             <img src={ SlopeCommand }></img>
             <div className='work-detail-content'>
               <div className='subtitle'>UX Design</div>
               <div className='subtitle'>2021</div>
             </div>
-          </span>
-        </div></Link>
+          </span>*/}
+        </div></Link></Reveal>
         <br></br>
-        <div className='work-list-item'>
+        <Reveal effect='fade'><Link to='/freely'><div className='work-list-item'>
           <h2>Freely</h2>
-          <span className='work-detail'>
+          {/*<span className='work-detail'>
             <img src={ Freely }></img>
             <div className='work-detail-content'>
               <div className='subtitle'>UX Design, Logo Design</div>
               <div className='subtitle'>2019</div>
             </div>
-          </span>
-        </div>
+          </span>*/}
+        </div></Link></Reveal>
         <br></br>
-        <div className='work-list-item'>
+        <Reveal effect='fade'><Link to='/nabla'><div className='work-list-item'>
           <h2>Nabla</h2>
-          <span className='work-detail'>
+          {/*<span className='work-detail'>
             <img src={ Nabla }></img>
             <div className='work-detail-content'>
               <div className='subtitle'>UX Design, Logo Design</div>
               <div className='subtitle'>2019</div>
             </div>
-          </span>
-        </div>
+          </span>*/}
+        </div></Link></Reveal>
         <br></br>
-        <div className='work-list-item'>
+        <Reveal effect='fade'><Link to='/godaddy'><div className='work-list-item'>
           <h2>GoDaddy</h2>
-          <span className='work-detail'>
+          {/*<span className='work-detail'>
             <img src={ GoDaddy }></img>
             <div className='work-detail-content'>
               <div className='subtitle'>UX Engineering</div>
               <div className='subtitle'>2018 - now</div>
             </div>
-          </span>
-        </div>
+          </span>*/}
+        </div></Link></Reveal>
       </div>
       <div className='contact-section section'>
         <div className='subtitle'>Contact</div>
-        <Button title='Drop a line' />
-        <Button title='Linkedin' dark />
-        <Button title='Twitter' dark />
-        <Button title='Dribbble' dark />
+        <a target='_blank' rel='noopener noreferrer' href='mailto:hellothere@cristobalgrana.me'><Button title='Drop a line' arrowDir={ 0 } /></a>
+        <a target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/cristobal-grana-samanez/'><Button title='Linkedin' arrowDir={ 0 } dark /></a>
+        <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/cristo_grana'><Button title='Twitter' arrowDir={ 0 } dark /></a>
+        <a target='_blank' rel='noopener noreferrer' href='https://dribbble.com/cristobalgrana'><Button title='Dribbble' arrowDir={ 0 } dark /></a>
       </div>
       <div className='copyright'>
         <h3>Cristobal Grana Samanez <span>&copy;2021</span></h3>

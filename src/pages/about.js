@@ -6,12 +6,16 @@ import Rebillet from '../images/rebillet.png';
 import BonIver from '../images/auatc.png';
 import Whiskey from '../images/whiskey.png';
 import Menu from '../components/menu';
+import Button from '../components/button';
 import '../styles/index.scss';
 
 const AboutPage = () => (
   <div className='about page'>
-    <SEO title="Cristobal Grana | About me" />
+    <SEO title="Cristobal Gra&ntilde;a | About me" />
     <Menu />
+    <div className='spotify-player'>
+      <iframe src="https://open.spotify.com/embed/track/2X1PJ3l0wM4D42EiEdVh5W" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
     <div className='header-subtitle'>
       <span className='subtitle'>About</span>
       <span className='subtitle'>&mdash; &nbsp; Portfolio 2021</span>
@@ -48,6 +52,9 @@ const AboutPage = () => (
           <p>Joshua Burnside</p>
         </div>
       </div>
+    </div>
+    <div className='work-nav'>
+      <Link to='/works'><Button title='Check out my works' subtitle="If you haven't already," dark /></Link>
     </div>
     <div className='copyright'>
       <h3>Cristobal Grana Samanez <span>&copy;2021</span></h3>

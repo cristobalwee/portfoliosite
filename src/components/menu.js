@@ -3,9 +3,11 @@ import { Link } from 'gatsby';
 import classnames from 'classnames';
 
 import MenuIcon from '../images/menu_icon.svg';
+import CloseIcon from '../images/close_icon.svg';
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
+  const buttonIcon = open ? CloseIcon : MenuIcon;
   const toggleMenu = () => {
     setOpen(!open);
   }
@@ -23,7 +25,7 @@ const Menu = () => {
         </div>
       </div>
       <div className='menu-btn' onClick={ toggleMenu }>
-        <img className='menu-icon' src={ MenuIcon }></img>
+        <img className='menu-icon' src={ buttonIcon }></img>
       </div>
     </div>
   );
