@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'gatsby';
 import anime from 'animejs/lib/anime.es.js';
 import Reveal from 'react-reveal/Reveal';
+import TransitionLink from 'gatsby-plugin-transition-link';
 
 import SEO from '../components/seo';
 import Menu from '../components/menu';
@@ -66,8 +67,10 @@ const IndexPage = () => {
       </p></Reveal>
       <div className='works-section section'>
         <Reveal effect='fade'><div className='subtitle'>Featured works</div></Reveal>
-        <Reveal effect='fade'><Link to='/slope-command'><div className='work-list-item'>
-          <h2>Slope Command</h2>
+        <Reveal effect='fade'>
+          <TransitionLink to='/slope-command' exit={{ length: 0.5 }}>
+            <div className='work-list-item'>
+              <h2>Slope Command</h2>
           {/*<span className='work-detail'>
             <img src={ SlopeCommand }></img>
             <div className='work-detail-content'>
@@ -75,7 +78,9 @@ const IndexPage = () => {
               <div className='subtitle'>2021</div>
             </div>
           </span>*/}
-        </div></Link></Reveal>
+            </div>
+          </TransitionLink>
+        </Reveal>
         <br></br>
         <Reveal effect='fade'><Link to='/freely'><div className='work-list-item'>
           <h2>Freely</h2>
