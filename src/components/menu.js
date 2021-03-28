@@ -4,6 +4,12 @@ import classnames from 'classnames';
 
 import MenuIcon from '../images/menu_icon.svg';
 import CloseIcon from '../images/close_icon.svg';
+import '../fonts/SharpGroteskMedium09.woff';
+import '../fonts/SharpGroteskMedium21.woff';
+import '../fonts/SharpGroteskMedium09.woff2';
+import '../fonts/SharpGroteskMedium21.woff2';
+import '../fonts/SharpGroteskMedium09.eot';
+import '../fonts/SharpGroteskMedium21.eot';
 
 const Menu = () => {
   const [open, setOpen] = useState(false);
