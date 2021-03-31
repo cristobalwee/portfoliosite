@@ -54,10 +54,6 @@ a {
 
 .page {
   padding: 7rem 7rem 1rem;
-
-  @media only screen and (min-width: 841px) and (max-width: 992px) {
-    padding: 7rem 5rem 1rem;
-  }
 }
 
 .letter {
@@ -69,6 +65,22 @@ a {
   justify-content: space-between;
   align-content: center;
   color: $secondary;
+}
+
+.add-delay-0 {
+  transition-delay: 0.1s !important;
+}
+
+.add-delay-1 {
+  transition-delay: 0.2s !important;
+}
+
+.add-delay-2 {
+  transition-delay: 0.3s !important;
+}
+
+.add-delay-3 {
+  transition-delay: 0.4s !important;
 }
 
 p {
@@ -141,6 +153,7 @@ p {
     transition: transform 0.25s ease;
     transform: scaleX(1);
     transform-origin: left;
+    white-space: nowrap;
 
     h3 {
       margin: 0;
@@ -192,6 +205,7 @@ p {
     transform-origin: bottom;
     box-shadow: $box-shadow;
     width: 0;
+    will-change: transform;
 
     .content-inner {
       opacity: 0;
@@ -282,10 +296,36 @@ p {
     font-weight: 100;
     line-height: 36px;
     margin: 2rem 0 3rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: transform 0.75s ease 0.5s, opacity 0.75s ease 0.5s;
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .works-section {
+    &.visible {
+      .work-list-item, .subtitle {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .subtitle {
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: transform 0.75s ease, opacity 0.75s ease;
+    }
+
     .work-list-item {
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: transform 0.75s ease, opacity 0.75s ease;
+
       &:hover {
         .work-detail {
           opacity: 1;
@@ -321,15 +361,28 @@ p {
         }
       }
     }
-
-    .subtitle {
-      margin-bottom: 1rem;
-    }
   }
 
   .contact-section {
+    &.visible {
+      > a, .subtitle {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .subtitle {
       margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: transform 0.75s ease, opacity 0.75s ease;
+    }
+
+    > a {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: transform 0.75s ease, opacity 0.75s ease;
     }
 
     .button {
@@ -473,6 +526,22 @@ p {
   }
 }
 
+@media only screen and (max-width: 992px) {
+  .page {
+    padding: 7rem 5rem 1rem;
+  }
+
+  .works {
+    .works-container {
+      .work-item {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 840px) {
   h1 {
     font-size: 12rem;
@@ -508,13 +577,10 @@ p {
     }
   }
 
-  .works {
-    .works-container {
-      .work-item {
-        img {
-          max-width: 100%;
-        }
-      }
+  .about {
+    > p {
+      font-size: 22px;
+      line-height: 36px;
     }
   }
 }
@@ -527,6 +593,7 @@ p {
 
   h2 {
     font-size: 5rem;
+    margin: 0;
   }
 
   .work-nav {
@@ -603,10 +670,6 @@ p {
   h1 {
     font-size: 8rem;
     margin-top: 10px;
-  }
-
-  h2 {
-    font-size: 4rem;
   }
 
   .page {

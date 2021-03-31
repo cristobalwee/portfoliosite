@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import anime from 'animejs/lib/anime.es.js';
 import Reveal from 'react-reveal/Reveal';
@@ -41,15 +41,40 @@ const IndexPage = () => {
     }, '-=400');
   }
 
+  // Scroll observers
+  const index = useRef(null);
+  const aboutSection = useRef(null);
+  const worksSection = useRef(null);
+  const contactSection = useRef(null);
+
+  const setupObserver = (node) => {
+    if (typeof window.IntersectionObserver === `function`) {
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            node.current.className = node.current.className + ' visible';
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      observer.observe(node.current);
+    }
+  }
+
   useEffect(() => {
     const textWrapper = document.querySelector('h1');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
     introAnims();
+    setupObserver(aboutSection);
+    setupObserver(worksSection);
+    setupObserver(contactSection);
   });
 
   return (
-    <div className='index page'>
+    <div className='index page' ref={ index }>
       <SEO title='Cristobal Gra&ntilde;a' />
       <Menu />
       <div className='header-subtitle'>
@@ -59,52 +84,29 @@ const IndexPage = () => {
       <h1>HELLO THERE.</h1>
       <img className='portrait' src={ Portrait }></img>
       <img className='portrait-mobile' src={ PortraitMobile }></img>
-      <Reveal effect='fade'><p className='about-section'>
+      <p className='about-section' ref={ aboutSection }>
         Welcome to my site, my name Cristobal Gra&ntilde;a and I’m currently a User Experience engineer at <span><a target='_blank' rel='noopener noreferrer' href='https://www.godaddy.com/'>GoDaddy</a></span>.
         I love learning about <span><a target='_blank' rel='noopener noreferrer' href='https://en.wikipedia.org/wiki/Trivia'>things that don’t matter</a></span> and doing stuff with the web.
         I like to think I belong to the group of people who have the ability to solve design problems via code. <br></br>
         <span><Link to='/about'>Read more</Link></span>
-      </p></Reveal>
-      <div className='works-section section'>
-        <Reveal effect='fade'><div className='subtitle'>Featured works</div></Reveal>
-        <Reveal effect='fade'>
+      </p>
+      <div className='works-section section' ref={ worksSection }>
+        <div className='subtitle'>Featured works</div>
+        <div className='work-list-item add-delay-0'>
           <TransitionLink to='/slope-command' exit={{ length: 0.5 }}>
-            <div className='work-list-item'>
-              <h2>Slope Command</h2>
-          {/*<span className='work-detail'>
-            <img src={ SlopeCommand }></img>
-            <div className='work-detail-content'>
-              <div className='subtitle'>UX Design</div>
-              <div className='subtitle'>2021</div>
-            </div>
-          </span>*/}
-            </div>
+            <h2>Slope Command</h2>
           </TransitionLink>
-        </Reveal>
+        </div>
         <br></br>
-        <Reveal effect='fade'><Link to='/freely'><div className='work-list-item'>
+        <div className='work-list-item add-delay-1'><Link to='/freely'>
           <h2>Freely</h2>
-          {/*<span className='work-detail'>
-            <img src={ Freely }></img>
-            <div className='work-detail-content'>
-              <div className='subtitle'>UX Design, Logo Design</div>
-              <div className='subtitle'>2019</div>
-            </div>
-          </span>*/}
-        </div></Link></Reveal>
+        </Link></div>
         <br></br>
-        <Reveal effect='fade'><Link to='/nabla'><div className='work-list-item'>
+        <div className='work-list-item add-delay-2'><Link to='/nabla'>
           <h2>Nabla</h2>
-          {/*<span className='work-detail'>
-            <img src={ Nabla }></img>
-            <div className='work-detail-content'>
-              <div className='subtitle'>UX Design, Logo Design</div>
-              <div className='subtitle'>2019</div>
-            </div>
-          </span>*/}
-        </div></Link></Reveal>
+        </Link></div>
         <br></br>
-        <Reveal effect='fade'><Link to='/godaddy'><div className='work-list-item'>
+        <div className='work-list-item add-delay-3'><Link to='/nabla'>
           <h2>GoDaddy</h2>
           {/*<span className='work-detail'>
             <img src={ GoDaddy }></img>
@@ -113,14 +115,14 @@ const IndexPage = () => {
               <div className='subtitle'>2018 - now</div>
             </div>
           </span>*/}
-        </div></Link></Reveal>
+        </Link></div>
       </div>
-      <div className='contact-section section'>
+      <div className='contact-section section' ref={ contactSection }>
         <div className='subtitle'>Contact</div>
-        <a target='_blank' rel='noopener noreferrer' href='mailto:hellothere@cristobalgrana.me'><Button title='Drop a line' arrowDir={ 0 } /></a>
-        <a target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/cristobal-grana-samanez/'><Button title='Linkedin' arrowDir={ 0 } dark /></a>
-        <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/cristo_grana'><Button title='Twitter' arrowDir={ 0 } dark /></a>
-        <a target='_blank' rel='noopener noreferrer' href='https://dribbble.com/cristobalgrana'><Button title='Dribbble' arrowDir={ 0 } dark /></a>
+        <a className='add-delay-0' target='_blank' rel='noopener noreferrer' href='mailto:hellothere@cristobalgrana.me'><Button title='Drop a line' arrowDir={ 0 } /></a>
+        <a className='add-delay-1' target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/cristobal-grana-samanez/'><Button title='Linkedin' arrowDir={ 0 } dark /></a>
+        <a className='add-delay-2' target='_blank' rel='noopener noreferrer' href='https://twitter.com/cristo_grana'><Button title='Twitter' arrowDir={ 0 } dark /></a>
+        <a className='add-delay-3' target='_blank' rel='noopener noreferrer' href='https://dribbble.com/cristobalgrana'><Button title='Dribbble' arrowDir={ 0 } dark /></a>
       </div>
       <div className='copyright'>
         <h3>Cristobal Grana Samanez <span>&copy;2021</span></h3>
