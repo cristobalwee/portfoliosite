@@ -54,6 +54,10 @@ a {
 
 .page {
   padding: 7rem 7rem 1rem;
+
+  @media only screen and (min-width: 841px) and (max-width: 992px) {
+    padding: 7rem 5rem 1rem;
+  }
 }
 
 .letter {
@@ -442,6 +446,16 @@ p {
     > img {
       max-width: 48%;
     }
+
+    @media only screen and (min-width: 1440px) {
+      &.center-screen-lg {
+        justify-content: center;
+
+        > img:first-child {
+          margin-right: 2rem;
+        }
+      }
+    }
   }
 }
 
@@ -459,7 +473,7 @@ p {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 840px) {
   h1 {
     font-size: 12rem;
   }

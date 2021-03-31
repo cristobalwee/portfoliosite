@@ -37,7 +37,7 @@ const SlopeCommandPage = () => (
     </div>
     <div className='work-about-focus-section'>
       <div className='subtitle'>Period</div>
-      <p>2021</p>
+      <p>2021, ongoing</p>
     </div>
     <p>
       After we decided roughly what we wanted out of the blog, I started exploring
@@ -45,7 +45,7 @@ const SlopeCommandPage = () => (
       concepts and center the brand. I had initially drawn up a few logo prototypes that used
       the names <i>Subfive2k</i> and <i>Slope command</i> from our collective brainstorming.
     </p>
-    <div className='work-image-section'>
+    <div className='work-image-section center-screen-lg'>
       <img src={ Concept1 }></img>
       <img src={ Concept2 }></img>
     </div>
