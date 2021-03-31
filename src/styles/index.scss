@@ -297,12 +297,10 @@ p {
     line-height: 36px;
     margin: 2rem 0 3rem;
     opacity: 0;
-    transform: translateY(1rem);
-    transition: transform 0.75s ease 0.5s, opacity 0.75s ease 0.5s;
+    transition: opacity 0.5s ease 0.5s;
 
     &.visible {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 
@@ -318,13 +316,13 @@ p {
       margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(1rem);
-      transition: transform 0.75s ease, opacity 0.75s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     .work-list-item {
       opacity: 0;
       transform: translateY(1rem);
-      transition: transform 0.75s ease, opacity 0.75s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
 
       &:hover {
         .work-detail {
@@ -375,14 +373,14 @@ p {
       margin-bottom: 25px;
       opacity: 0;
       transform: translateY(1rem);
-      transition: transform 0.75s ease, opacity 0.75s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     > a {
       display: inline-block;
       opacity: 0;
       transform: translateY(1rem);
-      transition: transform 0.75s ease, opacity 0.75s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     .button {

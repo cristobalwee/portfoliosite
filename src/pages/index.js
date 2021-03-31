@@ -56,7 +56,7 @@ const IndexPage = () => {
           }
         });
       }, {
-        threshold: 0.5
+        threshold: 0.75
       });
 
       observer.observe(node.current);
