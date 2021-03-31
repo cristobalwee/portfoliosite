@@ -106,7 +106,7 @@ const IndexPage = () => {
           <h2>Nabla</h2>
         </Link></div>
         <br></br>
-        <div className='work-list-item add-delay-3'><Link to='/nabla'>
+        <div className='work-list-item add-delay-3'><Link to='/godaddy'>
           <h2>GoDaddy</h2>
           {/*<span className='work-detail'>
             <img src={ GoDaddy }></img>
