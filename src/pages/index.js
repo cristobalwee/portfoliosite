@@ -56,7 +56,7 @@ const IndexPage = () => {
           }
         });
       }, {
-        threshold: 0.75
+        threshold: 0.5
       });
 
       observer.observe(node.current);
@@ -85,9 +85,9 @@ const IndexPage = () => {
       <img className='portrait' src={ Portrait }></img>
       <img className='portrait-mobile' src={ PortraitMobile }></img>
       <p className='about-section' ref={ aboutSection }>
-        Welcome to my site, my name Cristobal Gra&ntilde;a and I’m currently a User Experience engineer at <span><a target='_blank' rel='noopener noreferrer' href='https://www.godaddy.com/'>GoDaddy</a></span>.
+        Welcome to my site, my name is Cristobal Gra&ntilde;a and I’m currently a User Experience engineer at <span><a target='_blank' rel='noopener noreferrer' href='https://www.godaddy.com/'>GoDaddy</a></span>.
         I love learning about <span><a target='_blank' rel='noopener noreferrer' href='https://en.wikipedia.org/wiki/Trivia'>things that don’t matter</a></span> and doing stuff with the web.
-        I like to think I belong to the group of people who have the ability to solve design problems via code. <br></br>
+        And I like to think I belong to the group of people who have the ability to solve design problems via code. <br></br>
         <span><Link to='/about'>Read more</Link></span>
       </p>
       <div className='works-section section' ref={ worksSection }>

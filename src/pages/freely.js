@@ -10,6 +10,9 @@ import Page4 from '../images/freely_page4.png';
 import Logo from '../images/freely_logo.png';
 import LogoDark from '../images/freely_logo_dark.png';
 import Assets from '../images/freely_assets.png';
+import Screens from '../images/freely_screens.png';
+import Landing from '../images/freely_landing.png';
+import Footer from '../images/freely_footer.png';
 import Menu from '../components/menu';
 import Button from '../components/button';
 import '../styles/index.scss';
@@ -73,6 +76,15 @@ const FreelyPage = () => (
       With that out of the way, it was time to go to the flows. I lost a lot of the lo-fi flows I wrote down,
       but I still worked mostly with the high fidelity screens.
     </p>
+    <img src={ Screens }></img>
+    <p>
+      And, of course, I messed around with a landing page for it to potentially promote the app once we got it
+      fully implmented.
+    </p>
+    <div className='work-image-section'>
+      <img src={ Landing }></img>
+      <img src={ Footer }></img>
+    </div>
     <div className='work-nav'>
       <Link to='/slope-command'><Button title='Slope Command' subtitle='Previous' arrowDir={ -1 } dark /></Link>
       <Link to='/nabla'><Button title='Nabla' subtitle='Next' dark /></Link>
