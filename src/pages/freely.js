@@ -79,7 +79,7 @@ const FreelyPage = () => (
     <img src={ Screens }></img>
     <p>
       And, of course, I messed around with a landing page for it to potentially promote the app once we got it
-      fully implmented.
+      fully implemented.
     </p>
     <div className='work-image-section'>
       <img src={ Landing }></img>
