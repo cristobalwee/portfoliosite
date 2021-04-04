@@ -83,6 +83,10 @@ a {
   transition-delay: 0.4s !important;
 }
 
+.add-delay-4 {
+  transition-delay: 0.5s !important;
+}
+
 p {
   > span {
     font-weight: bold;
@@ -306,7 +310,7 @@ p {
 
   .works-section {
     &.visible {
-      .work-list-item, .subtitle {
+      .work-list-item, .subtitle, .view-all-link {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
@@ -361,6 +365,14 @@ p {
           margin-left: 1rem;
         }
       }
+    }
+
+    .view-all-link {
+      margin: 2rem 0 0 0;
+      opacity: 0;
+      transform: translateY(1rem);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      pointer-events: none;
     }
   }
 

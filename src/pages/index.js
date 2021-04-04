@@ -116,6 +116,7 @@ const IndexPage = () => {
             </div>
           </span>*/}
         </Link></div>
+        <p className='view-all-link add-delay-4'><span><Link to='/works'>View all</Link></span></p>
       </div>
       <div className='contact-section section' ref={ contactSection }>
         <div className='subtitle'>Contact</div>
