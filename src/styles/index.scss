@@ -410,9 +410,9 @@ p {
 
 .about {
   > p {
-    font-size: 28px;
+    font-size: 1.5rem;
     font-weight: 100;
-    line-height: 44px;
+    line-height: 42px;
     margin: 4rem 0 3rem;
   }
 
@@ -573,6 +573,10 @@ p {
     bottom: 2rem;
   }
 
+  .subtitle {
+    font-size: 14px;
+  }
+
   .index {
     .portrait {
       display: none;
@@ -622,8 +626,8 @@ p {
 
   .index {
     .about-section {
-      font-size: 20px;
-      line-height: 32px;
+      font-size: 18px;
+      line-height: 30px;
     }
   }
 
@@ -634,8 +638,8 @@ p {
     }
 
     p {
-      font-size: 20px;
-      line-height: 32px;
+      font-size: 18px;
+      line-height: 30px;
     }
 
     .work-about-focus-section {
@@ -659,8 +663,8 @@ p {
 
   .about {
     > p {
-      font-size: 20px;
-      line-height: 32px;
+      font-size: 18px;
+      line-height: 30px;
     }
 
     .album-section {
