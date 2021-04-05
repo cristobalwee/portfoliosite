@@ -640,6 +640,7 @@ p {
     p {
       font-size: 18px;
       line-height: 30px;
+      margin: 1.5rem 0 2rem;
     }
 
     .work-about-focus-section {
@@ -668,6 +669,8 @@ p {
     }
 
     .album-section {
+      margin: 4rem 0 2rem;
+
       .album-section-inner {
         flex-direction: column;
 
@@ -682,6 +685,10 @@ p {
     .works-container {
       grid-template-columns: 1fr;
     }
+  }
+
+  .work-nav {
+    margin: 0 0 -6rem;
   }
 }
 

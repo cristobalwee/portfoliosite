@@ -51,6 +51,9 @@ const WorksPage = () => (
         <p>Logo Design, 2018</p>
       </div></Link>
     </div>
+    <div className='copyright'>
+      <h3>Cristobal Grana Samanez <span>&copy;2021</span></h3>
+    </div>
   </div>
 )
 
