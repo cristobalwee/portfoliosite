@@ -48,7 +48,7 @@ a {
   font-family: Helvetica, sans-serif;
   font-style: italic;
   font-weight: lighter;
-  // font-size: 18px;
+  font-size: 16px;
   color: $secondary;
 }
 
@@ -700,5 +700,26 @@ p {
 
   .page {
     padding: 7rem 2rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  h1 {
+    font-size: 22rem;
+  }
+
+  .page {
+    padding: 12rem 9rem 1rem;
+  }
+
+  .menu {
+    right: 6rem;
+    bottom: 4rem;
+  }
+
+  .work {
+    .header-img {
+      height: 22rem;
+    }
   }
 }
