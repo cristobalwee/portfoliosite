@@ -24,28 +24,6 @@ import '../styles/index.scss';
 
 const IndexPage = () => {
   const [loading, setLoading] = useState(true);
-  const introAnims = () => {
-    // anime.timeline()
-    // .add({
-    //   targets: '.letter',
-    //   translateY: [30,0],
-    //   opacity: [0,1],
-    //   easing: 'easeOutExpo',
-    //   duration: 1100,
-    //   delay: (el, i) => 1500 + 18 * i
-    // }).add({
-    //   targets: ['.portrait', '.portrait-mobile'],
-    //   translateY: [65,0],
-    //   opacity: [0,1],
-    //   easing: 'easeOutExpo',
-    //   duration: 1200,
-    // }, '-=1200').add({
-    //   targets: ['.index .header-subtitle', '.index .menu'],
-    //   opacity: [0,1],
-    //   easing: 'linear',
-    //   duration: 300
-    // }, '-=400');
-  }
 
   // Scroll observers
   const index = useRef(null);
@@ -59,7 +37,7 @@ const IndexPage = () => {
     { title: 'GoDaddy', role: 'UX Engineering', period: '2018 - now', color: '#135457', link: '/godaddy', img: GoDaddy }
   ];
 
-  const setupObserver = (node, intersection=0.25) => {
+  const setupObserver = (node, intersection=0.2) => {
     const threshold = viewQuery('(max-width: 520px)') ? 0.15 : intersection;
     if (typeof window.IntersectionObserver === `function`) {
       const observer = new window.IntersectionObserver((entries) => {
@@ -85,10 +63,9 @@ const IndexPage = () => {
       setLoading(false);
     }, 2500);
 
-    introAnims();
     setupObserver(aboutSection, 0.5);
     setupObserver(worksSection);
-    setupObserver(contactSection);
+    setupObserver(contactSection, 0.8);
   });
 
   return (
@@ -121,7 +98,7 @@ const IndexPage = () => {
             { workList.map((work, i) => {
               const { title, role, period, color, img, link } = work;
               return (
-                <div className={ 'add-delay-' + i}>
+                <div className={ 'works-item add-delay-' + i }>
                   <LinkFade url={ link }>
                     <WorkItem title={ title } role={ role } period={ period } color={ color } img={ img } index={ i } />
                   </LinkFade>
