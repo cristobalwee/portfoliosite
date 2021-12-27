@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
 import classnames from 'classnames';
 
+import LinkFade from '../components/linkFade';
 import MenuIcon from '../images/menu_icon.svg';
 import CloseIcon from '../images/close_icon.svg';
 import '../fonts/SharpGroteskMedium09.woff';
@@ -11,7 +11,7 @@ import '../fonts/SharpGroteskMedium21.woff2';
 import '../fonts/SharpGroteskMedium09.eot';
 import '../fonts/SharpGroteskMedium21.eot';
 
-const Menu = () => {
+const Menu = ({ loading }) => {
   const [open, setOpen] = useState(false);
   const buttonIcon = open ? CloseIcon : MenuIcon;
   const toggleMenu = () => {
@@ -19,15 +19,15 @@ const Menu = () => {
   }
 
   return (
-    <div className={ classnames('menu', { 'open': open }) }>
+    <div className={ classnames('menu', { 'open': open, 'loading': loading }) }>
       <div className='menu-content'>
         <div className='content-inner'>
           <div className='subtitle'>Menu</div>
-          <Link to='/'><h3>Home</h3></Link>
+          <LinkFade url='/'><h3>Home</h3></LinkFade>
           <hr></hr>
-          <Link to='/about'><h3>About</h3></Link>
+          <LinkFade url='/about'><h3>About</h3></LinkFade>
           <hr></hr>
-          <Link to='/works'><h3>Works</h3></Link>
+          <LinkFade url='/works'><h3>Works</h3></LinkFade>
         </div>
       </div>
       <div className='menu-btn' onClick={ toggleMenu }>

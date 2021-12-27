@@ -1,14 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'gatsby';
 import anime from 'animejs/lib/anime.es.js';
 import Reveal from 'react-reveal/Reveal';
-import TransitionLink from 'gatsby-plugin-transition-link';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import classnames from 'classnames';
 
 import SEO from '../components/seo';
 import Menu from '../components/menu';
 import Button from '../components/button';
+import Loader from '../components/loader';
 import WorkItem from '../components/workItem';
+import LinkFade from '../components/linkFade';
+import viewQuery from '../helpers/viewQuery';
 import Portrait from '../images/portrait_short.jpg';
 import PortraitMobile from '../images/portrait.jpg';
 import SlopeCommand from '../images/slope_command.png';
@@ -18,7 +20,10 @@ import GoDaddy from '../images/godaddy.png';
 import DarkArrow from '../images/right_arrow_dark.svg';
 import '../styles/index.scss';
 
+// https://kasunvimu8.medium.com/stateful-gatsby-with-redux-261e68139ec7
+
 const IndexPage = () => {
+  const [loading, setLoading] = useState(true);
   const introAnims = () => {
     // anime.timeline()
     // .add({
@@ -54,7 +59,8 @@ const IndexPage = () => {
     { title: 'GoDaddy', role: 'UX Engineering', period: '2018 - now', color: '#135457', link: '/godaddy', img: GoDaddy }
   ];
 
-  const setupObserver = (node) => {
+  const setupObserver = (node, intersection=0.25) => {
+    const threshold = viewQuery('(max-width: 520px)') ? 0.15 : intersection;
     if (typeof window.IntersectionObserver === `function`) {
       const observer = new window.IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -65,7 +71,7 @@ const IndexPage = () => {
           }
         });
       }, {
-        threshold: 0.5
+        threshold
       });
 
       observer.observe(node.current);
@@ -75,9 +81,12 @@ const IndexPage = () => {
   useEffect(() => {
     // const textWrapper = document.querySelector('h1');
     // textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
 
     introAnims();
-    setupObserver(aboutSection);
+    setupObserver(aboutSection, 0.5);
     setupObserver(worksSection);
     setupObserver(contactSection);
   });
@@ -86,21 +95,24 @@ const IndexPage = () => {
     <React.Fragment>
       <div className='index page' ref={ index }>
         <SEO title='Cristobal Gra&ntilde;a' />
-        <Menu />
-        <div className='header-subtitle'>
+        <Menu loading={ loading } />
+        <Loader loading={ loading }/>
+        <div className={ classnames('header-subtitle', { 'loading': loading }) }>
           <span className='subtitle'>Cristobal Gra&ntilde;a</span>
           <span className='subtitle'>&mdash; &nbsp; Portfolio 2021</span>
         </div>
-        <h1>HELLO THERE.</h1>
-        <img className='portrait' src={ Portrait }></img>
-        <img className='portrait-mobile' src={ PortraitMobile }></img>
+        <div className={ classnames('landing-hero', { 'loading': loading }) }>
+          <h1>HELLO THERE.</h1>
+          <img className='portrait' src={ Portrait }></img>
+          <img className='portrait-mobile' src={ PortraitMobile }></img>
+        </div>
         <div className='about-section' ref={ aboutSection }>
           <h2>Welcome to my site</h2>
           <p className='about-paragraph'>
             My name is Cristobal Gra&ntilde;a and I’m currently a User Experience engineer at <span><a target='_blank' rel='noopener noreferrer' href='https://www.godaddy.com/'>GoDaddy</a></span>.
             I love learning about <span><a target='_blank' rel='noopener noreferrer' href='https://en.wikipedia.org/wiki/Trivia'>things that don’t matter</a></span> and doing stuff with the web.
             And I like to think I belong to the group of people who have the ability to solve design problems via code. <br></br>
-            <Link to='/about'><Button title='Read more' dark /></Link>
+            <LinkFade url='/about'><Button title='Read more' dark /></LinkFade>
           </p>
         </div>
         <div className='works-section section' ref={ worksSection }>
@@ -110,9 +122,9 @@ const IndexPage = () => {
               const { title, role, period, color, img, link } = work;
               return (
                 <div className={ 'add-delay-' + i}>
-                  <AniLink cover direction='up' bg='#2c2c2c' to={ link } exit={{ length: 0.5 }} state={{ fromPage: '/' }}>
+                  <LinkFade url={ link }>
                     <WorkItem title={ title } role={ role } period={ period } color={ color } img={ img } index={ i } />
-                  </AniLink>
+                  </LinkFade>
                 </div>
               );
             })}

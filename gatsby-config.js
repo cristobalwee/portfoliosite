@@ -15,8 +15,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -29,6 +27,18 @@ module.exports = {
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-spotify`,
+      options: {
+        clientId: `2065b1d870444ca6908b46920f79182c`,
+        clientSecret: `ac63f5077fd84f78a9ead889b0c9bef0`, // Don't add to public repository
+        refreshToken: `BQCBYNgWVpyN-1cJhLfE2q-ZGEhpclKyXY2axL5-W1m-IqAS96NPAU8mVlc2wKUzzzw-l9gIuMy9bFg34dYPNxBL63GkmexFj5so330cdNsYNN0ZepT5pS7p6ywKrrBzBg6pjJejG7EiD8G49aaL29cKGqbRd6WuRWWuLpjBbtcLdU1Hgm_O4ho`,
+
+        fetchPlaylists: true, // optional. Set to false to disable fetching of your playlists
+        fetchRecent: true, // optional. Set to false to disable fetching of your recently played tracks
+        timeRanges: ['short_term', 'medium_term', 'long_term'], // optional. Set time ranges to be fetched
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
