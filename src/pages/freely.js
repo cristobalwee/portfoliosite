@@ -21,6 +21,7 @@ import '../styles/index.scss';
 
 const FreelyPage = ({ location }) => {
   const [loading, setLoading] = useState(true);
+  const backLink = location && location.state && location.state.fromPage;
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,7 +37,7 @@ const FreelyPage = ({ location }) => {
           <span className='subtitle'>&mdash; &nbsp; Portfolio 2021</span>
         </div>
         <div className='work-header-content'>
-          <LinkFade url={ location.state.fromPage || '/' }><img src={ CloseButton } /></LinkFade>
+          <LinkFade url={ backLink || '/' }><img src={ CloseButton } /></LinkFade>
           <div>
             <div><p className='italic'>work.02</p></div>
             <h2>Freely</h2>

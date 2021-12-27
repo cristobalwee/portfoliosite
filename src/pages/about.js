@@ -20,6 +20,7 @@ import '../styles/index.scss';
 
 const AboutPage = () => {
   const [loading, setLoading] = useState(true);
+  const [isMobile, setMobile] = useState(false);
   const tracks = [
     {
       trackLink: 'https://open.spotify.com/track/6QcsVmeFQX6zt2TeVu9uQW?si=a30a24c6a5fb4997',
@@ -48,6 +49,7 @@ const AboutPage = () => {
   ];
 
   useEffect(() => {
+    setMobile(viewQuery('(max-width: 520px)'));
     setTimeout(() => {
       setLoading(false);
     }, 800);
@@ -68,7 +70,7 @@ const AboutPage = () => {
         <div className={ classnames('about-hero', { 'loading': loading }) }>
           <h2>HERE'S MORE ABOUT ME</h2>
           <div className='about-header-content'>
-            <img src={ viewQuery('(max-width: 520px)') ? PortraitLong : Portrait } />
+            <img src={ isMobile ? PortraitLong : Portrait } />
             <p>
               I’m a Peruvian-born interaction engineer with a passion for minimalist styles and delightful experiences.
               I see myself as someone who can contribute at the intersect of design and development – a designer who works

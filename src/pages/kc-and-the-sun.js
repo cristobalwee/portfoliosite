@@ -12,6 +12,7 @@ import '../styles/index.scss';
 
 const KCPage = ({ location }) => {
   const [loading, setLoading] = useState(true);
+  const backLink = location && location.state && location.state.fromPage;
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,7 +28,7 @@ const KCPage = ({ location }) => {
           <span className='subtitle'>&mdash; &nbsp; Portfolio 2021</span>
         </div>
         <div className='work-header-content'>
-          <LinkFade url={ location.state.fromPage || '/' }><img src={ CloseButton } /></LinkFade>
+          <LinkFade url={ backLink || '/' }><img src={ CloseButton } /></LinkFade>
           <div>
             <div><p className='italic'>work.06</p></div>
             <h2>KC and the sun</h2>

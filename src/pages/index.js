@@ -24,6 +24,7 @@ import '../styles/index.scss';
 
 const IndexPage = () => {
   const [loading, setLoading] = useState(true);
+  const [isMobile, setMobile] = useState(false);
 
   // Scroll observers
   const index = useRef(null);
@@ -38,7 +39,7 @@ const IndexPage = () => {
   ];
 
   const setupObserver = (node, intersection=0.2) => {
-    const threshold = viewQuery('(max-width: 520px)') ? 0.15 : intersection;
+    const threshold = isMobile ? 0.15 : intersection;
     if (typeof window.IntersectionObserver === `function`) {
       const observer = new window.IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -57,6 +58,7 @@ const IndexPage = () => {
   }
 
   useEffect(() => {
+    setMobile(viewQuery('(max-width: 520px)'));
     // const textWrapper = document.querySelector('h1');
     // textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
     setTimeout(() => {
