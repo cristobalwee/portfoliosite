@@ -15,6 +15,7 @@ import '../styles/index.scss';
 
 const WorksPage = () => {
   const [loading, setLoading] = useState(true);
+  const [isMobile, setMobile] = useState(false);
   const workList = [
     { title: 'Slope Command', role: 'UX Design', period: '2021', color: '#3E575B', link: '/slope-command', img: SlopeCommand },
     { title: 'Freely', role: 'UX Design', period: '2019', color: '#A78A8A', link: '/freely', img: Freely },
@@ -25,6 +26,7 @@ const WorksPage = () => {
   ];
 
   useEffect(() => {
+    setMobile(window.matchMedia('(max-width: 520px)').matches);
     setTimeout(() => {
       setLoading(false);
     }, 800);
@@ -45,7 +47,7 @@ const WorksPage = () => {
             return (
               <div className={ 'works-item add-delay-' + i}>
                 <LinkFade url={ link }>
-                  <WorkItem title={ title } role={ role } period={ period } color={ color } img={ img } index={ i } fullWidth={ !window.matchMedia('(max-width: 520px)').matches } />
+                  <WorkItem title={ title } role={ role } period={ period } color={ color } img={ img } index={ i } fullWidth={ !isMobile } />
                 </LinkFade>
               </div>
             );

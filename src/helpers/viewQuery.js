@@ -1,3 +1,5 @@
-export default (query) => (
-  window.matchMedia(query).matches
-);
+export default (query) => {
+  if (!window) return false;
+
+  return window.matchMedia(query).matches;
+};
